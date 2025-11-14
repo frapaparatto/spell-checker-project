@@ -1,16 +1,15 @@
-
-
 {
-    "dictionary": {
-        "path": "./big.txt",
-    },
-    "algorithm": {
-        "type": "damerau_levenshtein",  
-        "max_distance_short": 1,       
-        "max_distance_long": 2         
-    },
-    "performance": {
-        "use_length_filter": true,
-        "use_early_termination": true
-    }
+   "dictionary":{
+      "english_path":"./sherlock.txt",
+      "business_path":"./business_corpus.txt"
+   },
+   "algorithm":{
+      "type":"damerau_levenshtein",
+      "max_distance_short":1,
+      "max_distance_long":2
+   },
+   "performance":{
+      "use_length_filter":true,
+      "use_early_termination":true
+   }
 }
