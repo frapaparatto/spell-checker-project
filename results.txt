@@ -1,0 +1,97 @@
+SPELL CHECKER EXPERIMENT RESULTS
+=================================
+
+Experiment: Two-word misspelling correction
+Query: "sles reprt"
+Result: "sales report"
+
+PERFORMANCE METRICS
+-------------------
+Total execution time: 1.182 seconds
+Total function calls: 3,491,725
+
+Performance breakdown:
+- Damerau-Levenshtein algorithm: 0.702s (59% of total)
+  * Called 65,482 times
+  * 0.921s cumulative time
+
+- Correction suggestion: 0.019s per word
+  * Called 2 times (once per misspelled word)
+  * 0.941s cumulative time per word
+
+- Dictionary creation: 0.224s
+  * 0.112s per word
+
+CONSIDERATIONS
+--------------
+1. BOTTLENECK: Damerau-Levenshtein distance calculation is the primary performance bottleneck
+   - Accounts for ~60% of total execution time
+   - Called 65k+ times for just 2 words
+   - Suggests inefficient candidate generation or lack of early filtering
+
+2. OPTIMIZATION OPPORTUNITIES:
+   - Implement candidate pre-filtering before distance calculation
+   - Add length-based filtering (reject candidates with length diff > 2)
+   - Cache distance calculations for repeated comparisons
+
+3. ACCURACY: Correction quality is good (sles→sales, reprt→report)
+
+4. SCALABILITY CONCERN: Linear increase in function calls suggests O(n) or worse complexity
+   - Need to benchmark with longer queries to confirm scaling behavior
+
+IMPROVEMENTS NEEDED
+-------------------
+Priority 1: Reduce Damerau-Levenshtein calls by 80-90%
+Priority 2: Implement candidate filtering strategy
+Priority 3: Add performance benchmarks for varying query lengths
+Priority 4: Consider alternative algorithms for initial filtering
+
+=================================
+
+Experiment #2: Two-word misspelling correction (After code review)
+Query: "sles reprt"
+Result: "sales report"
+
+PERFORMANCE METRICS
+-------------------
+Total execution time: 0.577 seconds
+Total function calls: 1,319,155
+
+Performance breakdown:
+- Damerau-Levenshtein algorithm: 0.222s (38% of total)
+  * Called 28,022 times
+  * 0.292s cumulative time
+
+- Correction suggestion: 0.012s per word
+  * Called 2 times (once per misspelled word)
+  * 0.327s cumulative time total
+
+- Dictionary creation: 0.023s
+  * 0.012s per word
+
+IMPROVEMENTS OBSERVED
+---------------------
+1. PERFORMANCE GAIN: 51% reduction in total execution time (1.182s → 0.577s)
+   - Total function calls reduced by 62% (3.5M → 1.3M)
+
+2. ALGORITHM EFFICIENCY: Damerau-Levenshtein calls reduced by 57% (65,482 → 28,022)
+   - Per-call time improved from 0.011ms to 0.008ms
+   - Cumulative time reduced by 68% (0.921s → 0.292s)
+
+3. CORRECTION SPEED: Suggestion time per word improved by 37% (0.019s → 0.012s)
+
+4. DICTIONARY LOADING: Improved by 90% (0.224s → 0.023s)
+   - Likely due to caching or system optimizations
+
+CONSIDERATIONS
+--------------
+1. Still room for optimization - 28k distance calculations for 2 words is high
+2. Length-based filtering could further reduce unnecessary calculations
+3. Accuracy remains good (sles→sales, reprt→report)
+4. The improvement suggests some optimization occurred between runs
+
+NEXT STEPS
+----------
+- Implement length-based candidate filtering (as per config)
+- Add early termination in distance calculation
+- Test with longer queries to verify scaling
