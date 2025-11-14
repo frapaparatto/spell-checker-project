@@ -1,15 +1,15 @@
 from typing import Dict, List
 
 def query_tokenizer(query: str) -> List[str]:
-    """Function for handling multi-word queries"""
+    """Tokenize multi-word queries in single-word tokens."""
     ...
 
 def calculate_probability(word: str, words: Dict[str, int]) -> float:
-    """Function for calculating the probability of each word"""
+    """Calculate the probability of each single word in the dictionary."""
     ...
 
 def suggest_correction(query: str, dictionary: Dict[str, int]) -> str:
-    """Function for correcting the user query"""
+    """Main correction function."""
     ...
 
 

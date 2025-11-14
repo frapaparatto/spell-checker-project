@@ -1,9 +1,11 @@
 
+
+
 def damerau_levenshtein_distance(str1: str, str2: str) -> int:
     """
-    Function used to calculate the edit distance using the Damerau-Levenshtein Algorithm.
+    Calculate the Damerau-Levenshtein distance between two words.
 
-    Technique: Tabulation
+    Technique: Tabulation.
     """
 
     table = [[0 for _ in range(len(str1) + 1)] for _ in range(len(str2) + 1)]

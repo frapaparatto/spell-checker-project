@@ -2,9 +2,9 @@
 
 def levenshtein_distance(str1: str, str2: str) -> int:
     """
-    Function that calculates the edit distance between two strings using the Levenshtein Algorithm.
+    Calculate the Levenshtein distance between two words.
 
-    Technique: Tabulation 
+    Technique: Tabulation.
     """
     table = [[0 for _ in range(len(str1) + 1)] for _ in range(len(str2) + 1)]
 
