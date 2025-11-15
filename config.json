@@ -7,9 +7,5 @@
       "type":"damerau_levenshtein",
       "max_distance_short":1,
       "max_distance_long":2
-   },
-   "performance":{
-      "use_length_filter":true,
-      "use_early_termination":true
    }
 }

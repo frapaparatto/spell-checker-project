@@ -9,7 +9,13 @@ def load_file(filepath: str) -> str:
         raise FileNotFoundError(f"File '{filepath}' not found.")
 
     with open(filepath, "r") as file:
-        return file.read()
+        file = file.read()
+
+    if not file:
+        # TODO: understand if there are more appropriate exceptions class to handle that
+        raise ValueError("The file is empty")
+
+    return file
 
 
 def create_dictionary(text: str) -> Dict[str, int]:
@@ -18,3 +24,12 @@ def create_dictionary(text: str) -> Dict[str, int]:
 
     # return a dictionary with the count of all occurrences of each word
     return Counter(words)
+
+
+def get_max_distance(len_query: int, config: Dict) -> int:
+    """Use different values for the max edit distance based on the length of the word"""
+    return (
+        config["algorithm"]["max_distance_long"]
+        if len_query >= 4 
+        else config["algorithm"]["max_distance_short"]
+    )
