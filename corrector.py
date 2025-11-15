@@ -25,7 +25,7 @@ def suggest_correction(
 
     candidates = []
     for word in dictionary:
-        if abs(len(word)) - len(query) > max_distance:
+        if abs(len(word) - len(query)) > max_distance:
             continue
 
         distance = damerau_levenshtein_distance(query, word)
