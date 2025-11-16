@@ -46,9 +46,8 @@ def suggest_correction(
     if not candidates:
         return query
 
-    min_distance = min(distance for _, distance in candidates)
     best_candidates = [
-        word for word, distance in candidates if distance == min_distance
+        word for word, distance in candidates if distance == best_distance_found
     ]
 
     return max(best_candidates, key=lambda x: calculate_probability(x, dictionary))

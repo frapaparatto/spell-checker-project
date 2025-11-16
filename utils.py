@@ -10,12 +10,12 @@ def load_file(filepath: str) -> str:
         raise FileNotFoundError(f"File '{filepath}' not found.")
 
     with open(filepath, "r") as file:
-        file = file.read()
+        text = file.read()
 
     if not file:
         raise ValueError("The file is empty")
 
-    return file
+    return text
 
 
 def create_dictionary(text: str) -> Dict[str, int]:
