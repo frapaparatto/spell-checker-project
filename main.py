@@ -60,7 +60,6 @@ def main():
         print(" ".join(suggestions))
 
     stats = pstats.Stats(profile).sort_stats(pstats.SortKey.TIME)
-
     # print stats only for modules that contains those name patterns
     stats.print_stats("corrector|utils|algorithms|main")
 

@@ -1,7 +1,7 @@
 {
    "dictionary":{
-      "english_path":"./sherlock.txt",
-      "business_path":"./business_corpus.txt"
+      "english_path":"./text_files/sherlock.txt",
+      "business_path":"./text_files/business_corpus.txt"
    },
    "algorithm":{
       "type":"damerau_levenshtein",
