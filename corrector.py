@@ -1,4 +1,5 @@
 from typing import Dict, List
+
 from algorithms.damerau_levenshtein import damerau_levenshtein_distance
 
 
@@ -7,7 +8,6 @@ def query_tokenizer(query: str) -> List[str]:
     Separator: space.
     """
     return query.split()
-
 
 def calculate_probability(word: str, words: Dict[str, int]) -> float:
     """Calculate the probability of each single word in the dictionary."""

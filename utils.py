@@ -1,6 +1,6 @@
-import re
 import json
 import os
+import re
 from collections import Counter
 from typing import Dict
 

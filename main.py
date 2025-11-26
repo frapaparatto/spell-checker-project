@@ -1,9 +1,10 @@
 import cProfile
-import sys
 import json
 import pstats
-from utils import load_file, create_dictionary, get_max_distance, load_config
-from corrector import suggest_correction, query_tokenizer
+import sys
+
+from corrector import query_tokenizer, suggest_correction
+from utils import create_dictionary, get_max_distance, load_config, load_file
 
 
 def main():

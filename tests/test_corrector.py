@@ -1,6 +1,7 @@
-from typing import List
 import unittest
-from corrector import suggest_correction, query_tokenizer
+from typing import List
+
+from corrector import query_tokenizer, suggest_correction
 
 
 class TestCorrector(unittest.TestCase):
