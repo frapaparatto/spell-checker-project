@@ -58,7 +58,8 @@ def main():
             if query
         ]
 
-        print(" ".join(suggestions))
+        suggestion = " ".join(suggestions)
+        print(f"Do you mean: {suggestion}")
 
     stats = pstats.Stats(profile).sort_stats(pstats.SortKey.TIME)
     # print stats only for modules that contains those name patterns
